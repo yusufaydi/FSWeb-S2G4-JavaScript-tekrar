@@ -143,6 +143,8 @@ siralisayilar = besyuzdenkucuksayilar.sort(function (a, b) {
 /*ÖRNEK: sayilar dizisi içerisinde 45 sayısı 3 kere yazılmış. "45 sayısı 3 tekrar edilmiştir" stringini `tekraredensayilar` dizisine aktaracağız.
 			💡 İPUCU: Tekrar edilen sayıları ve kaç kere tekrar edildiğini kaydetmek için bir nesne tanımlamalısınız, bu görevi yapabilmek için en az 2 kere döngü yazmalısınız. Birinci döngüde hangi sayının kaç kere tekrar edildiğini tespit edip, 2. döngüde stringi oluşturup verilen diziye aktarmalısınız.*/
 
+/*      
+
 tekraredensayilar = [];
 let obj = {};
 let str = "";
@@ -158,6 +160,25 @@ for (let i = 0; i < sayilar.length; i++) {
 }
 
 tekraredensayilar.push(str);
+*/
+
+tekraredensayilar = [];
+const sayilarTekrar = new Object();
+
+for (let x in sayilar) {
+  if (sayilarTekrar[sayilar[x]]) {
+    sayilarTekrar[sayilar[x]]++;
+  } else sayilarTekrar[sayilar[x]] = 1;
+}
+
+for (let key in sayilarTekrar) {
+  sayilarTekrar[key] > 1
+    ? tekraredensayilar.push(
+        `${key} sayısı ${sayilarTekrar[key]} kere tekrar edilmiştir`
+      )
+    : 0;
+}
+console.log(`Tekrar edenler Listesi : ${tekraredensayilar}`);
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa() {
